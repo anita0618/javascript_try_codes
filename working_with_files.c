@@ -25,7 +25,18 @@ void filewrite(char *filename){
         printf("A file with such name exists. Do you want to delete it in order to write on it? (y/n)");
         gets(c);
         if(c[0]=='y'){
-            f=fopen(filename,"w");
+            ok=1;
+            fclose(f);
+        }
+        else{
+            fclose(f);
+            printf("Error opening file %s for writing.",filename);
+        }
+    }
+    else
+        ok=1;
+    if(ok == 1){
+        f=fopen(filename,"w");
             if(f){
                 printf("\n\n\n");
                 gets(s);
@@ -35,14 +46,7 @@ void filewrite(char *filename){
                 }
             }
             fclose(f);
-        }
-        else{
-            fclose(f);
-            printf("Error opening file %s for writing.",filename);
-        }
     }
-    else
-        printf("Error opening file %s for writing.",filename);
 }
 
 void fileread(char *filename){
