@@ -29,7 +29,7 @@ void addtofile(char *filename){
                     do{
                         printf("Enter student's mark %d(0 = quit): ",i+1);
                         scanf("%d",&s.marks[i]);
-                    }while((s.marks<2 || s.marks>6) && s.marks!=0);
+                    }while((s.marks[i]<2 || s.marks[i]>6) && s.marks[i]!=0);
                     s.avr+=s.marks[i];
                     if(s.marks[i]==0)
                         break;
@@ -104,7 +104,7 @@ void fileread(char *filename){
             if(fread(&s,sizeof(s),1,f)){
                 printf("\n%2d.%-15s",s.num,s.name);
                 i=0;
-                while(i!=10){
+                while(s.marks[i]!=0){
                     printf("%2d",s.marks[i]);
                     i++;
                 }
